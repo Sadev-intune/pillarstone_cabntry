@@ -3,151 +3,928 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pillarstone Cabinetry | Luxury Craftsmanship</title>
-    <!-- Google Fonts: Prata for headings, Montserrat for body -->
+    <meta name="description" content="PillarStone Cabinetry - Premium custom cabinetry designed and crafted in Melbourne, Australia.">
+    <title>PillarStone Cabinetry | Premium Custom Cabinets Melbourne</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Prata&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #F5F0E8;
+            --dark-color: #1A1208;
+            --gold-color: #B8820A;
+            --green-color: #3D5A4C;
+            --card-color: #FFFFFF;
+            --muted-color: #6B5E4E;
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+            
+            --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-speed: 400ms;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: var(--font-display);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 100px 5%;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all var(--transition-speed) var(--ease);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--gold-color);
+            color: var(--dark-color);
+            border: 1px solid var(--gold-color);
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--gold-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--gold-color);
+            border: 1px solid var(--gold-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold-color);
+            color: var(--dark-color);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 20px rgba(26, 18, 8, 0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo .pillar {
+            color: var(--dark-color);
+        }
+
+        .logo .stone {
+            color: var(--gold-color);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 400;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .nav-links a.nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-color);
+            transition: width var(--transition-speed) var(--ease);
+        }
+
+        .nav-links a.nav-item:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 2px;
+            background-color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 5%;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 5vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--dark-color);
+        }
+        
+        .hero-line {
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted-color);
+            margin-bottom: 40px;
+            max-width: 80%;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-image {
+            flex: 1;
+            height: calc(100vh - 100px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 10s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Stats */
+        .stats {
+            background-color: var(--dark-color);
+            padding: 80px 5%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat-block {
+            padding: 0 40px;
+        }
+
+        .stat-label {
+            color: var(--gold-color);
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-text {
+            color: var(--bg-color);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Services */
+        .services {
+            background-color: var(--bg-color);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--dark-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--card-color);
+            padding: 60px 40px;
+            border-left: 3px solid var(--gold-color);
+            transition: all var(--transition-speed) var(--ease);
+            cursor: pointer;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .service-card p {
+            color: var(--muted-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: -10px 10px 30px rgba(184, 130, 10, 0.15);
+        }
+
+        /* Showcase */
+        .showcase {
+            background-color: var(--card-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: 400px;
+            gap: 24px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+        }
+        
+        .gallery-item:nth-child(4) {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-speed) var(--ease);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(26, 18, 8, 0.8) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity var(--transition-speed) var(--ease);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: var(--bg-color);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 8px;
+            transform: translateY(20px);
+            transition: transform var(--transition-speed) var(--ease);
+        }
+
+        .gallery-tag {
+            color: var(--gold-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: translateY(20px);
+            transition: transform var(--transition-speed) var(--ease) 50ms;
+        }
+
+        .gallery-item:hover .gallery-title,
+        .gallery-item:hover .gallery-tag {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-color);
+            display: flex;
+            gap: 80px;
+        }
+
+        .contact-info, .contact-form-wrapper {
+            flex: 1;
+        }
+
+        .contact-info h2 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .contact-info p {
+            color: var(--muted-color);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #25D366;
+            color: white;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: transform var(--transition-speed) var(--ease), background-color var(--transition-speed) ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            background-color: #20BA59;
+        }
+
+        .contact-form {
+            background-color: var(--card-color);
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(26, 18, 8, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #E5E0D8;
+            background-color: var(--bg-color);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold-color);
+            box-shadow: 0 0 0 1px var(--gold-color);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--bg-color);
+            padding: 80px 5% 40px;
+            border-top: 4px solid var(--gold-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: var(--bg-color);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-brand .logo .pillar {
+            color: var(--bg-color);
+        }
+
+        .footer-brand p {
+            color: #A39B8E;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--gold-color);
+            margin-bottom: 24px;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #A39B8E;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #A39B8E;
+            font-size: 0.9rem;
+        }
+
+        /* Utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 800ms var(--ease);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .services-grid {
+                gap: 24px;
+            }
+            .gallery-grid {
+                grid-auto-rows: 300px;
+            }
+            .contact {
+                flex-direction: column;
+                gap: 50px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 5%;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 60px;
+                transition: right 0.4s ease;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero {
+                flex-direction: column;
+                padding-top: 120px;
+            }
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+                text-align: center;
+                align-items: center;
+            }
+            .hero p {
+                max-width: 100%;
+            }
+            .hero-image {
+                height: 50vh;
+                width: 100%;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+            }
+            .gallery-item:nth-child(1) {
+                grid-row: span 1;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+            .contact-form {
+                padding: 30px 20px;
+            }
+            .gallery-grid {
+                grid-auto-rows: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- Glass Navbar -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="logo.png" alt="Pillarstone Cabinetry" class="logo-img" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block';">
-                <span id="logo-text" style="display:none;">PillarStone</span>
-            </a>
-            <nav>
-                <div class="nav-links-wrapper">
-                    <ul class="nav-links">
-                        <li><a href="#home">Workshop</a></li>
-                        <li><a href="#standards">Standards</a></li>
-                        <li><a href="#projects">Gallery</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </nav>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <span class="pillar">Pillar</span><span class="stone">Stone</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#services" class="nav-item">Services</a>
+            <a href="#projects" class="nav-item">Projects</a>
+            <a href="#contact" class="nav-item">Contact</a>
+            <a href="#contact" class="btn btn-gold">Get a Quote</a>
         </div>
-    </header>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-    <!-- Native Scroll Intercept -->
-    <div id="scroll-wrapper">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="hero-heading">
+                <span class="hero-line">Built for Your Space.</span>
+                <span class="hero-line">Finished to Perfection.</span>
+            </h1>
+            <p id="hero-subtext">Melbourne's premium custom cabinetry — designed around how you live.</p>
+            <div class="hero-btns" id="hero-btns">
+                <a href="#projects" class="btn btn-outline">View Projects</a>
+                <a href="#contact" class="btn btn-gold">Get a Quote</a>
+            </div>
+        </div>
+        <div class="hero-image" id="hero-image">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200" alt="Premium Kitchen Custom Cabinetry">
+        </div>
+    </section>
 
-        <!-- Split-screen Hero -->
-        <section id="home" class="hero section-padding">
-            <div class="container hero-container">
-                <div class="hero-text-side">
-                    <h1 class="shutter-reveal">Crafting <br>Quality, <br>Style & <br><i>Functionality.</i></h1>
-                    <p class="shutter-reveal" style="transition-delay: 0.2s;">Welcome to the boutique showroom of Pillarstone Cabinetry. We forge bespoke interior architecture exclusively for Melbourne's finest homes.</p>
-                    <div class="shutter-reveal" style="transition-delay: 0.4s;">
-                        <a href="#projects" class="btn btn-primary">View the Gallery</a>
-                    </div>
-                </div>
-                <div class="hero-img-side shutter-reveal">
-                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=2070&auto=format&fit=crop" alt="High-end modern kitchen" class="parallax-img">
+    <!-- Stats Strip -->
+    <section class="stats reveal">
+        <div class="stat-block">
+            <span class="stat-label">100%</span>
+            <span class="stat-text">Custom Made</span>
+        </div>
+        <div class="stat-block">
+            <span class="stat-label">MEL</span>
+            <span class="stat-text">Melbourne Based</span>
+        </div>
+        <div class="stat-block">
+            <span class="stat-label">Premium</span>
+            <span class="stat-text">Materials Only</span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <h2>What We Craft</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal" style="transition-delay: 100ms;">
+                <h3>Custom Cabinets Made to Order</h3>
+                <p>Bespoke cabinetry solutions tailored to your exacting measurements, lifestyle requirements, and design sensibilities.</p>
+            </div>
+            <div class="service-card reveal" style="transition-delay: 200ms;">
+                <h3>Modern Kitchen Upgrades</h3>
+                <p>Transform the heart of your home with luxury materials, integrated appliances, and intelligent storage design.</p>
+            </div>
+            <div class="service-card reveal" style="transition-delay: 300ms;">
+                <h3>Perfect Fit Storage Solutions</h3>
+                <p>From walk-in wardrobes to custom entertainment units, we create seamless storage that elevates your interior.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Gallery Section -->
+    <section class="showcase" id="projects">
+        <div class="section-header reveal">
+            <h2>Our Signature Pieces</h2>
+        </div>
+        <div class="gallery-grid">
+            <!-- Large Left -->
+            <div class="gallery-item reveal" style="transition-delay: 100ms;">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900" alt="Sleek White Kitchen">
+                <div class="gallery-overlay">
+                    <span class="gallery-tag">Kitchens</span>
+                    <h3 class="gallery-title">Sleek White Kitchen</h3>
                 </div>
             </div>
-        </section>
-
-        <!-- The "Standards" Section -->
-        <section id="standards" class="standards section-padding">
-            <div class="container">
-                <div class="section-title shutter-reveal">
-                    <h2>Our Standards</h2>
-                    <p class="subtitle" style="color: var(--clr-text-muted); margin-top: 10px;">Precision engineering meets absolute dedication.</p>
-                </div>
-                
-                <div class="standards-flex">
-                    <div class="standard-column shutter-reveal">
-                        <div class="column-num">01</div>
-                        <h3>Custom Cabinets Made to Order</h3>
-                        <p>Architecturally aligned built-in storage engineered precisely for your floorplan.</p>
-                    </div>
-                    <div class="standard-column shutter-reveal" style="transition-delay: 0.1s;">
-                        <div class="column-num">02</div>
-                        <h3>Modern Kitchen Upgrades</h3>
-                        <p>Total aesthetic and structural transformations featuring the highest quality metallic hardware.</p>
-                    </div>
-                    <div class="standard-column shutter-reveal" style="transition-delay: 0.2s;">
-                        <div class="column-num">03</div>
-                        <h3>Perfect Fit Storage Solutions</h3>
-                        <p>Invisible luxury. Maximizing interior capacity while maintaining absolute minimalist restraint on the exterior.</p>
-                    </div>
+            <!-- Top Right -->
+            <div class="gallery-item reveal" style="transition-delay: 200ms;">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600" alt="Walnut Storage Wall">
+                <div class="gallery-overlay">
+                    <span class="gallery-tag">Living Spaces</span>
+                    <h3 class="gallery-title">Walnut Storage Wall</h3>
                 </div>
             </div>
-        </section>
-
-        <!-- The Gallery Setup -->
-        <section id="projects" class="gallery section-padding">
-            <div class="container">
-                <div class="section-title shutter-reveal">
-                    <h2>The Gallery</h2>
-                </div>
-
-                <div class="masonry-grid">
-                    <div class="masonry-item shutter-reveal">
-                        <div class="luxury-frame-wrapper">
-                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Modern kitchen">
-                        </div>
-                    </div>
-                    <div class="masonry-item shutter-reveal">
-                        <div class="luxury-frame-wrapper">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Bespoke storage solutions">
-                        </div>
-                    </div>
-                    <div class="masonry-item shutter-reveal offset-top">
-                        <div class="luxury-frame-wrapper">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Luxury custom cabinetry">
-                        </div>
-                    </div>
+            <!-- Bottom Right -->
+            <div class="gallery-item reveal" style="transition-delay: 300ms;">
+                <img src="https://images.unsplash.com/photo-1570129424883-7eecc74b97d5?q=80&w=600" alt="Walk-in Wardrobe">
+                <div class="gallery-overlay">
+                    <span class="gallery-tag">Bedrooms</span>
+                    <h3 class="gallery-title">Walk-in Wardrobe</h3>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Footer -->
-        <footer id="contact" class="contact-footer section-padding">
-            <div class="container footer-flex">
-                <div class="footer-cta shutter-reveal">
-                    <h3 class="footer-logo">PillarStone</h3>
-                    <p class="brand-text">Commence your architectural journey with Melbourne's premier cabinetry workshop.</p>
-                    
-                    <div class="whatsapp-box">
-                        <a href="https://wa.me/something" target="_blank" class="btn btn-whatsapp">
-                            Start Your Project on WhatsApp
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-form shutter-reveal">
-                    <h3>Direct Inquiry</h3>
-                    <form id="contactForm" action="mailto:pillarstonecabinetry@yahoo.com" method="post" enctype="text/plain">
-                        <div class="input-line">
-                            <input type="text" id="name" name="Name" required placeholder="Full Name">
-                        </div>
-                        <div class="input-line">
-                            <input type="email" id="email" name="Email" required placeholder="Email Address">
-                        </div>
-                        <div class="input-line">
-                            <textarea id="message" name="Message" rows="3" required placeholder="Project Details / Address"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-submit">Send Transmission</button>
-                    </form>
+            <!-- Full Bottom -->
+            <div class="gallery-item reveal" style="transition-delay: 400ms;">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200" alt="Charcoal & Gold Kitchen">
+                <div class="gallery-overlay">
+                    <span class="gallery-tag">Signature Kitchens</span>
+                    <h3 class="gallery-title">Charcoal & Gold Kitchen</h3>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-info reveal">
+            <h2>Let's discuss your space.</h2>
+            <p>Ready to bring your vision to life? Contact us via WhatsApp for a quick response, or fill out the form below to initiate your custom cabinetry consultation.</p>
             
-            <div class="container footer-bottom">
-                <p>&copy; 2026 Pillarstone Cabinetry. All rights reserved.</p>
+            <a href="https://wa.me/61400000000" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                </svg>
+                Chat on WhatsApp
+            </a>
+        </div>
+        <div class="contact-form-wrapper reveal" style="transition-delay: 200ms;">
+            <form action="mailto:pillarstonecabinetry@yahoo.com" method="POST" enctype="text/plain" class="contact-form" id="quote-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="Name" class="form-control" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="Email" class="form-control" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="Phone" class="form-control" placeholder="0400 000 000">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details *</label>
+                    <textarea id="message" name="Message" class="form-control" required placeholder="Tell us about your space and requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="pillar">Pillar</span><span class="stone">Stone</span>
+                </a>
+                <p>Crafting quality, style, and functionality into every space.</p>
             </div>
-        </footer>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Custom Cabinets</a></li>
+                    <li><a href="#services">Kitchen Upgrades</a></li>
+                    <li><a href="#services">Storage Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>Melbourne, VIC</li>
+                    <li>Australia</li>
+                    <li><a href="mailto:pillarstonecabinetry@yahoo.com">pillarstonecabinetry@yahoo.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PillarStone Cabinetry. All rights reserved.</p>
+        </div>
+    </footer>
 
-    </div> <!-- End Scroll Wrapper -->
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
 
-    <script src="script.js"></script>
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                // Animate hamburger to X (simplified here, just toggling state)
+            });
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Hero Staggered Animation
+            setTimeout(() => {
+                const lines = document.querySelectorAll('.hero-line');
+                lines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                        line.style.transform = 'translateY(0)';
+                        line.style.transition = 'all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    }, index * 150);
+                });
+
+                setTimeout(() => {
+                    const subtext = document.getElementById('hero-subtext');
+                    subtext.style.opacity = '1';
+                    subtext.style.transform = 'translateY(0)';
+                    subtext.style.transition = 'all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                }, lines.length * 150);
+
+                setTimeout(() => {
+                    const btns = document.getElementById('hero-btns');
+                    btns.style.opacity = '1';
+                    btns.style.transform = 'translateY(0)';
+                    btns.style.transition = 'all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                }, lines.length * 150 + 150);
+                
+                setTimeout(() => {
+                    const image = document.getElementById('hero-image');
+                    image.style.opacity = '1';
+                    image.style.transition = 'all 1200ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                }, 200);
+
+            }, 100);
+
+            // Intersection Observer for Scroll Animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Form Submit Intercept for Success Message (Optional UX enhancement)
+            const form = document.getElementById('quote-form');
+            form.addEventListener('submit', (e) => {
+                // Let the mailto action happen, but optionally clear the form after a small delay
+                setTimeout(() => {
+                    form.reset();
+                    alert("Thank you! Your email client has been opened. Please send the message to complete your request.");
+                }, 500);
+            });
+        });
+    </script>
 </body>
 </html>
