@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PillarStone Cabinetry - Premium custom cabinetry designed and crafted in Melbourne, Australia.">
+    <meta name="description"
+        content="PillarStone Cabinetry - Premium custom cabinetry designed and crafted in Melbourne, Australia.">
     <title>PillarStone Cabinetry | Premium Custom Cabinets Melbourne</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #F5F0E8;
@@ -19,10 +23,10 @@
             --green-color: #3D5A4C;
             --card-color: #FFFFFF;
             --muted-color: #6B5E4E;
-            
+
             --font-display: 'Playfair Display', serif;
             --font-body: 'Outfit', sans-serif;
-            
+
             --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-speed: 400ms;
         }
@@ -45,7 +49,11 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo {
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo {
             font-family: var(--font-display);
         }
 
@@ -141,7 +149,7 @@
             font-size: 1.1rem;
             position: relative;
         }
-        
+
         .nav-links a.nav-item::after {
             content: '';
             position: absolute;
@@ -193,7 +201,7 @@
             margin-bottom: 24px;
             color: var(--dark-color);
         }
-        
+
         .hero-line {
             display: block;
             opacity: 0;
@@ -231,7 +239,7 @@
             object-position: center;
             transition: transform 10s ease;
         }
-        
+
         .hero-image:hover img {
             transform: scale(1.05);
         }
@@ -325,11 +333,11 @@
             overflow: hidden;
             cursor: pointer;
         }
-        
+
         .gallery-item:nth-child(1) {
             grid-row: span 2;
         }
-        
+
         .gallery-item:nth-child(4) {
             grid-column: span 2;
         }
@@ -394,7 +402,8 @@
             gap: 80px;
         }
 
-        .contact-info, .contact-form-wrapper {
+        .contact-info,
+        .contact-form-wrapper {
             flex: 1;
         }
 
@@ -541,16 +550,20 @@
             .hero h1 {
                 font-size: 3rem;
             }
+
             .services-grid {
                 gap: 24px;
             }
+
             .gallery-grid {
                 grid-auto-rows: 300px;
             }
+
             .contact {
                 flex-direction: column;
                 gap: 50px;
             }
+
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
@@ -560,6 +573,7 @@
             section {
                 padding: 80px 5%;
             }
+
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -573,73 +587,90 @@
                 padding-top: 60px;
                 transition: right 0.4s ease;
             }
+
             .nav-links.active {
                 right: 0;
             }
+
             .hamburger {
                 display: flex;
             }
+
             .hero {
                 flex-direction: column;
                 padding-top: 120px;
             }
+
             .hero-content {
                 padding-right: 0;
                 margin-bottom: 50px;
                 text-align: center;
                 align-items: center;
             }
+
             .hero p {
                 max-width: 100%;
             }
+
             .hero-image {
                 height: 50vh;
                 width: 100%;
             }
+
             .stats {
                 flex-direction: column;
                 gap: 40px;
             }
+
             .services-grid {
                 grid-template-columns: 1fr;
             }
+
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+
             .gallery-item:nth-child(1),
             .gallery-item:nth-child(4) {
                 grid-column: span 1;
             }
+
             .gallery-item:nth-child(1) {
                 grid-row: span 1;
             }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
+
             .btn {
                 width: 100%;
                 text-align: center;
             }
+
             .hero-btns {
                 flex-direction: column;
                 width: 100%;
             }
+
             .contact-form {
                 padding: 30px 20px;
             }
+
             .gallery-grid {
                 grid-auto-rows: 250px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -675,7 +706,8 @@
             </div>
         </div>
         <div class="hero-image" id="hero-image">
-            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200" alt="Premium Kitchen Custom Cabinetry">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200"
+                alt="Premium Kitchen Custom Cabinetry">
         </div>
     </section>
 
@@ -703,15 +735,18 @@
         <div class="services-grid">
             <div class="service-card reveal" style="transition-delay: 100ms;">
                 <h3>Custom Cabinets Made to Order</h3>
-                <p>Bespoke cabinetry solutions tailored to your exacting measurements, lifestyle requirements, and design sensibilities.</p>
+                <p>Bespoke cabinetry solutions tailored to your exacting measurements, lifestyle requirements, and
+                    design sensibilities.</p>
             </div>
             <div class="service-card reveal" style="transition-delay: 200ms;">
                 <h3>Modern Kitchen Upgrades</h3>
-                <p>Transform the heart of your home with luxury materials, integrated appliances, and intelligent storage design.</p>
+                <p>Transform the heart of your home with luxury materials, integrated appliances, and intelligent
+                    storage design.</p>
             </div>
             <div class="service-card reveal" style="transition-delay: 300ms;">
                 <h3>Perfect Fit Storage Solutions</h3>
-                <p>From walk-in wardrobes to custom entertainment units, we create seamless storage that elevates your interior.</p>
+                <p>From walk-in wardrobes to custom entertainment units, we create seamless storage that elevates your
+                    interior.</p>
             </div>
         </div>
     </section>
@@ -724,7 +759,8 @@
         <div class="gallery-grid">
             <!-- Large Left -->
             <div class="gallery-item reveal" style="transition-delay: 100ms;">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900" alt="Sleek White Kitchen">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900"
+                    alt="Sleek White Kitchen">
                 <div class="gallery-overlay">
                     <span class="gallery-tag">Kitchens</span>
                     <h3 class="gallery-title">Sleek White Kitchen</h3>
@@ -732,7 +768,8 @@
             </div>
             <!-- Top Right -->
             <div class="gallery-item reveal" style="transition-delay: 200ms;">
-                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600" alt="Walnut Storage Wall">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600"
+                    alt="Walnut Storage Wall">
                 <div class="gallery-overlay">
                     <span class="gallery-tag">Living Spaces</span>
                     <h3 class="gallery-title">Walnut Storage Wall</h3>
@@ -740,7 +777,8 @@
             </div>
             <!-- Bottom Right -->
             <div class="gallery-item reveal" style="transition-delay: 300ms;">
-                <img src="https://images.unsplash.com/photo-1570129424883-7eecc74b97d5?q=80&w=600" alt="Walk-in Wardrobe">
+                <img src="https://cdn.sharps.co.uk/media/assets/pages/bedrooms/walk-in-wardrobes/wiw-sherboure-white-banner-01.jpg"
+                    alt="Walk-in Wardrobe">
                 <div class="gallery-overlay">
                     <span class="gallery-tag">Bedrooms</span>
                     <h3 class="gallery-title">Walk-in Wardrobe</h3>
@@ -748,7 +786,8 @@
             </div>
             <!-- Full Bottom -->
             <div class="gallery-item reveal" style="transition-delay: 400ms;">
-                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200" alt="Charcoal & Gold Kitchen">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200"
+                    alt="Charcoal & Gold Kitchen">
                 <div class="gallery-overlay">
                     <span class="gallery-tag">Signature Kitchens</span>
                     <h3 class="gallery-title">Charcoal & Gold Kitchen</h3>
@@ -761,24 +800,28 @@
     <section class="contact" id="contact">
         <div class="contact-info reveal">
             <h2>Let's discuss your space.</h2>
-            <p>Ready to bring your vision to life? Contact us via WhatsApp for a quick response, or fill out the form below to initiate your custom cabinetry consultation.</p>
-            
+            <p>Ready to bring your vision to life? Contact us via WhatsApp for a quick response, or fill out the form
+                below to initiate your custom cabinetry consultation.</p>
+
             <a href="https://wa.me/61400000000" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                 </svg>
                 Chat on WhatsApp
             </a>
         </div>
         <div class="contact-form-wrapper reveal" style="transition-delay: 200ms;">
-            <form action="mailto:pillarstonecabinetry@yahoo.com" method="POST" enctype="text/plain" class="contact-form" id="quote-form">
+            <form action="mailto:pillarstonecabinetry@yahoo.com" method="POST" enctype="text/plain" class="contact-form"
+                id="quote-form">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="Name" class="form-control" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="Email" class="form-control" required placeholder="john@example.com">
+                    <input type="email" id="email" name="Email" class="form-control" required
+                        placeholder="john@example.com">
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number (Optional)</label>
@@ -786,7 +829,8 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Project Details *</label>
-                    <textarea id="message" name="Message" class="form-control" required placeholder="Tell us about your space and requirements..."></textarea>
+                    <textarea id="message" name="Message" class="form-control" required
+                        placeholder="Tell us about your space and requirements..."></textarea>
                 </div>
                 <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Request</button>
             </form>
@@ -886,7 +930,7 @@
                     btns.style.transform = 'translateY(0)';
                     btns.style.transition = 'all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                 }, lines.length * 150 + 150);
-                
+
                 setTimeout(() => {
                     const image = document.getElementById('hero-image');
                     image.style.opacity = '1';
@@ -914,7 +958,7 @@
             document.querySelectorAll('.reveal').forEach(el => {
                 observer.observe(el);
             });
-            
+
             // Form Submit Intercept for Success Message (Optional UX enhancement)
             const form = document.getElementById('quote-form');
             form.addEventListener('submit', (e) => {
@@ -927,4 +971,5 @@
         });
     </script>
 </body>
+
 </html>
