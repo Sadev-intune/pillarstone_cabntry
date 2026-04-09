@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pillarstone Cabinetry | Precision & Texture</title>
-    <!-- Google Fonts: Playfair Display for headings, Public Sans for body -->
+    <title>Pillarstone Cabinetry | Luxury Craftsmanship</title>
+    <!-- Google Fonts: Prata for headings, Montserrat for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Prata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar with Floating/Magnetic Underline -->
+    
+    <!-- Glass Navbar -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
@@ -21,16 +22,13 @@
             <nav>
                 <div class="nav-links-wrapper">
                     <ul class="nav-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Mastery</a></li>
+                        <li><a href="#home">Workshop</a></li>
+                        <li><a href="#standards">Standards</a></li>
                         <li><a href="#projects">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
-                    <div class="nav-indicator" id="nav-indicator"></div>
                 </div>
-                <a href="#quote" class="btn btn-quote d-desktop">Get a Quote</a>
                 <div class="hamburger">
-                    <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
@@ -38,139 +36,117 @@
         </div>
     </header>
 
-    <!-- Split-screen Hero with Parallax -->
-    <section id="home" class="hero">
-        <div class="hero-text-side">
-            <div class="hero-content drawer-mask">
-                <h1 class="drawer-reveal">Precision <br>& <i>Texture</i></h1>
-                <p class="drawer-reveal" style="transition-delay: 0.2s;">Elevating Melbourne spaces with award-winning custom cabinetry, blending architectural design with exceptional craftsmanship.</p>
-                <div class="drawer-reveal" style="transition-delay: 0.4s;">
-                    <a href="#services" class="btn btn-primary">Discover Mastery</a>
-                </div>
-            </div>
-        </div>
-        <div class="hero-img-side">
-            <div class="parallax-bg" id="hero-parallax"></div>
-        </div>
-    </section>
+    <!-- Native Scroll Intercept -->
+    <div id="scroll-wrapper">
 
-    <!-- Services (Mastery) Section with woodgrain texture hover -->
-    <section id="services" class="services section-padding">
-        <div class="container">
-            <div class="section-title drawer-mask">
-                <h2 class="drawer-reveal">The Art of Cabinetry</h2>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card drawer-mask">
-                    <div class="drawer-reveal">
-                        <div class="card-num">01</div>
-                        <h3>Bespoke Joinery</h3>
-                        <p>Impeccably tailored woodwork designed to merge seamlessly into your architectural flow.</p>
+        <!-- Split-screen Hero -->
+        <section id="home" class="hero section-padding">
+            <div class="container hero-container">
+                <div class="hero-text-side">
+                    <h1 class="shutter-reveal">Crafting <br>Quality, <br>Style & <br><i>Functionality.</i></h1>
+                    <p class="shutter-reveal" style="transition-delay: 0.2s;">Welcome to the boutique showroom of Pillarstone Cabinetry. We forge bespoke interior architecture exclusively for Melbourne's finest homes.</p>
+                    <div class="shutter-reveal" style="transition-delay: 0.4s;">
+                        <a href="#projects" class="btn btn-primary">View the Gallery</a>
                     </div>
                 </div>
-                <div class="service-card drawer-mask">
-                    <div class="drawer-reveal" style="transition-delay: 0.1s;">
-                        <div class="card-num">02</div>
-                        <h3>Luxury Kitchens</h3>
-                        <p>Where functionality meets high-end aesthetics, finished with select premium hardware.</p>
-                    </div>
+                <div class="hero-img-side shutter-reveal">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=2070&auto=format&fit=crop" alt="High-end modern kitchen" class="parallax-img">
                 </div>
-                <div class="service-card drawer-mask">
-                    <div class="drawer-reveal" style="transition-delay: 0.2s;">
-                        <div class="card-num">03</div>
-                        <h3>Architectural Robes</h3>
-                        <p>Storage transformed into an experience of elegance, utilizing modern smart-space solutions.</p>
+            </div>
+        </section>
+
+        <!-- The "Standards" Section -->
+        <section id="standards" class="standards section-padding">
+            <div class="container">
+                <div class="section-title shutter-reveal">
+                    <h2>Our Standards</h2>
+                    <p class="subtitle" style="color: var(--clr-text-muted); margin-top: 10px;">Precision engineering meets absolute dedication.</p>
+                </div>
+                
+                <div class="standards-flex">
+                    <div class="standard-column shutter-reveal">
+                        <div class="column-num">01</div>
+                        <h3>Custom Cabinets Made to Order</h3>
+                        <p>Architecturally aligned built-in storage engineered precisely for your floorplan.</p>
+                    </div>
+                    <div class="standard-column shutter-reveal" style="transition-delay: 0.1s;">
+                        <div class="column-num">02</div>
+                        <h3>Modern Kitchen Upgrades</h3>
+                        <p>Total aesthetic and structural transformations featuring the highest quality metallic hardware.</p>
+                    </div>
+                    <div class="standard-column shutter-reveal" style="transition-delay: 0.2s;">
+                        <div class="column-num">03</div>
+                        <h3>Perfect Fit Storage Solutions</h3>
+                        <p>Invisible luxury. Maximizing interior capacity while maintaining absolute minimalist restraint on the exterior.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Mastery Grid (Masonry Portfolio) -->
-    <section id="projects" class="portfolio section-padding">
-        <div class="container">
-            <div class="section-title drawer-mask">
-                <h2 class="drawer-reveal">Signature Projects</h2>
-            </div>
+        <!-- The Gallery Setup -->
+        <section id="projects" class="gallery section-padding">
+            <div class="container">
+                <div class="section-title shutter-reveal">
+                    <h2>The Gallery</h2>
+                </div>
 
-            <div class="masonry-grid">
-                <div class="masonry-item drawer-mask">
-                    <div class="drawer-reveal image-reveal-wrapper">
-                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Modern kitchen">
-                        <div class="item-overlay">
-                            <h4>Toorak Residence</h4>
-                            <p>Midnight & Oak Kitchen</p>
+                <div class="masonry-grid">
+                    <div class="masonry-item shutter-reveal">
+                        <div class="luxury-frame-wrapper">
+                            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Modern kitchen">
                         </div>
                     </div>
-                </div>
-                <div class="masonry-item drawer-mask">
-                    <div class="drawer-reveal image-reveal-wrapper">
-                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Bespoke storage solutions">
-                        <div class="item-overlay">
-                            <h4>Brighton Estate</h4>
-                            <p>Architectural Robes</p>
+                    <div class="masonry-item shutter-reveal">
+                        <div class="luxury-frame-wrapper">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Bespoke storage solutions">
                         </div>
                     </div>
-                </div>
-                <div class="masonry-item drawer-mask">
-                    <div class="drawer-reveal image-reveal-wrapper">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Luxury custom cabinetry">
-                        <div class="item-overlay">
-                            <h4>Malvern Boutique</h4>
-                            <p>Bespoke Joinery</p>
+                    <div class="masonry-item shutter-reveal offset-top">
+                        <div class="luxury-frame-wrapper">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" loading="lazy" alt="Luxury custom cabinetry">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact & Form -->
-    <footer id="contact" class="contact-footer section-padding">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info drawer-mask">
-                    <div class="drawer-reveal">
-                        <h3 class="footer-logo">PillarStone<br><i>Cabinetry</i></h3>
-                        <p class="brand-statement">Precision, texture, and uncompromising artistry for Melbourne's most distinct homes.</p>
-                        
-                        <div class="contact-buttons">
-                            <!-- Demo WhatsApp Link -->
-                            <a href="https://wa.me/something" target="_blank" class="btn btn-whatsapp">
-                                Chat with a Consultant
-                            </a>
-                        </div>
+        <!-- Contact Footer -->
+        <footer id="contact" class="contact-footer section-padding">
+            <div class="container footer-flex">
+                <div class="footer-cta shutter-reveal">
+                    <h3 class="footer-logo">PillarStone</h3>
+                    <p class="brand-text">Commence your architectural journey with Melbourne's premier cabinetry workshop.</p>
+                    
+                    <div class="whatsapp-box">
+                        <a href="https://wa.me/something" target="_blank" class="btn btn-whatsapp">
+                            Start Your Project on WhatsApp
+                        </a>
                     </div>
                 </div>
                 
-                <div class="footer-form drawer-mask">
-                    <div class="drawer-reveal">
-                        <h3 id="quote">Request a Consultation</h3>
-                        <form id="contactForm" action="mailto:pillarstonecabinetry@yahoo.com" method="post" enctype="text/plain">
-                            <div class="input-line">
-                                <input type="text" id="name" name="Name" required placeholder=" ">
-                                <label for="name">Your Name</label>
-                            </div>
-                            <div class="input-line">
-                                <input type="email" id="email" name="Email" required placeholder=" ">
-                                <label for="email">Email Address</label>
-                            </div>
-                            <div class="input-line">
-                                <textarea id="message" name="Message" rows="5" required placeholder=" "></textarea>
-                                <label for="message">Project Details</label>
-                            </div>
-                            <button type="submit" class="btn btn-submit">Submit Inquiry</button>
-                        </form>
-                    </div>
+                <div class="footer-form shutter-reveal">
+                    <h3>Direct Inquiry</h3>
+                    <form id="contactForm" action="mailto:pillarstonecabinetry@yahoo.com" method="post" enctype="text/plain">
+                        <div class="input-line">
+                            <input type="text" id="name" name="Name" required placeholder="Full Name">
+                        </div>
+                        <div class="input-line">
+                            <input type="email" id="email" name="Email" required placeholder="Email Address">
+                        </div>
+                        <div class="input-line">
+                            <textarea id="message" name="Message" rows="3" required placeholder="Project Details / Address"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Send Transmission</button>
+                    </form>
                 </div>
             </div>
             
-            <div class="footer-bottom">
+            <div class="container footer-bottom">
                 <p>&copy; 2026 Pillarstone Cabinetry. All rights reserved.</p>
             </div>
-        </div>
-    </footer>
+        </footer>
+
+    </div> <!-- End Scroll Wrapper -->
 
     <script src="script.js"></script>
 </body>
