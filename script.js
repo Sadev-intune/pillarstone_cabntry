@@ -2,87 +2,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinksWrapper = document.querySelector('.nav-links-wrapper');
     const navItems = document.querySelectorAll('.nav-links li a');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    // Close menu when clicking a link
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinksWrapper.classList.toggle('mobile-active');
+            // Animate hamburger to X (simple css toggles not fully added but logic is here)
+            const bars = hamburger.querySelectorAll('.bar');
+            if (hamburger.classList.contains('active')) {
+                bars[0].style.transform = 'translateY(8px) rotate(45deg)';
+                bars[1].style.opacity = '0';
+                bars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+            } else {
+                bars[0].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
+            }
         });
-    });
 
-    // 2. Sticky Navbar Glassmorphism
+        // Close menu when clicking a link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinksWrapper.classList.remove('mobile-active');
+                const bars = hamburger.querySelectorAll('.bar');
+                bars[0].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
+            });
+        });
+    }
+
+    // 2. Glassmorphism Navbar Scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 30) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }, { passive: true });
 
-    // 3. Scroll Reveal Animations (Intersection Observer)
-    const revealElements = document.querySelectorAll('.reveal');
-    const chainElements = document.querySelectorAll('.reveal-chain');
+    // 3. Magnetic Navbar "Flowing Underline"
+    const indicator = document.getElementById('nav-indicator');
+    const navList = document.querySelector('.nav-links');
+    
+    if (indicator && navList) {
+        navItems.forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                const linkRect = e.target.getBoundingClientRect();
+                const navRect = navList.getBoundingClientRect();
+                
+                // Calculate position relative to the ul (.nav-links)
+                const left = linkRect.left - navRect.left;
+                const width = linkRect.width;
+                
+                indicator.style.width = `${width}px`;
+                indicator.style.transform = `translateX(${left}px)`;
+                indicator.style.opacity = '1';
+            });
+        });
+
+        navList.addEventListener('mouseleave', () => {
+            indicator.style.width = '0';
+            indicator.style.opacity = '0';
+        });
+    }
+
+    // 4. "Drawer" Masking Scroll Reveal Effect (Intersection Observer)
+    const revealElements = document.querySelectorAll('.drawer-reveal');
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px 0px -100px 0px", // Trigger when slightly into the viewport
+        threshold: 0
+    };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+                // observer.unobserve(entry.target); // Revealing once. Comment logic if we want repeat
             }
         });
-    }, {
-        root: null,
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    });
+    }, observerOptions);
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // Staggered animation for grid items
-    const chainObserver = new IntersectionObserver((entries, observer) => {
-        let delay = 0;
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('active');
-                }, delay);
-                delay += 150; // stagger effect
-                observer.unobserve(entry.target);
+    // 5. Hero Parallax Effect Native JS
+    const heroParallax = document.getElementById('hero-parallax');
+    
+    if (heroParallax) {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.scrollY;
+                    // Only apply parallax if hero is in view
+                    if (scrolled < window.innerHeight) {
+                        // Move background at 30% speed of scroll
+                        heroParallax.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
-        });
-    }, {
-        root: null,
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    });
-
-    chainElements.forEach(el => chainObserver.observe(el));
-
-    // 4. Contact Form Handling Logic (Simulated for mailto:)
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-
-    // Since we are using an actual action="mailto:..." the form will trigger a mail client.
-    // However, if the user prefers, we can show a UI message like this (Optional, mostly the client handles it)
-    contactForm.addEventListener('submit', (e) => {
-        // e.preventDefault(); 
-        // We aren't preventing default because mailto needs to fire.
-        
-        formMessage.style.display = 'block';
-        formMessage.classList.add('success');
-        formMessage.textContent = "Opening your mail client...";
-        
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    });
+        }, { passive: true });
+    }
 });
