@@ -1,81 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Mobile Menu Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinksWrapper = document.querySelector('.nav-links-wrapper');
-    const navItems = document.querySelectorAll('.nav-links li a');
-
-    if(hamburger) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinksWrapper.classList.toggle('mobile-active');
-            // Animate hamburger to X (simple css toggles not fully added but logic is here)
-            const bars = hamburger.querySelectorAll('.bar');
-            if (hamburger.classList.contains('active')) {
-                bars[0].style.transform = 'translateY(8px) rotate(45deg)';
-                bars[1].style.opacity = '0';
-                bars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-            } else {
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                bars[2].style.transform = 'none';
-            }
-        });
-
-        // Close menu when clicking a link
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinksWrapper.classList.remove('mobile-active');
-                const bars = hamburger.querySelectorAll('.bar');
-                bars[0].style.transform = 'none';
-                bars[1].style.opacity = '1';
-                bars[2].style.transform = 'none';
-            });
-        });
+    /* --- 1. Smooth Inertial Scroll Physics --- */
+    const body = document.body;
+    const scrollWrapper = document.getElementById('scroll-wrapper');
+    
+    // Variables for interpolation
+    let currentY = 0;
+    let targetY = 0;
+    const ease = 0.08; // Lower = heavier scroll feeling
+    
+    // Set the body height to the wrapper's actual height so native scrollbars appear/work
+    function setBodyHeight() {
+        if(scrollWrapper) {
+            body.style.height = `${scrollWrapper.getBoundingClientRect().height}px`;
+        }
     }
-
-    // 2. Glassmorphism Navbar Scroll
-    const navbar = document.getElementById('navbar');
+    
+    // Wait for images and layouts to settle before measuring
+    window.addEventListener('load', setBodyHeight);
+    window.addEventListener('resize', setBodyHeight);
+    
+    // Track native scroll position
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 30) {
+        targetY = window.scrollY;
+    });
+    
+    // The animation loop interpolating the wrapper container
+    function renderScroll() {
+        if(scrollWrapper) {
+            // Calculate distance setup
+            currentY = currentY + (targetY - currentY) * ease;
+            
+            // Fix subpixel rendering artifacts by rounding to hundredths
+            let transformY = Math.round(currentY * 100) / 100;
+            
+            // Apply transform via matrix3d or translate3d for hardware acceleration
+            scrollWrapper.style.transform = `translate3d(0, -${transformY}px, 0)`;
+        }
+        requestAnimationFrame(renderScroll);
+    }
+    renderScroll();
+
+
+    /* --- 2. Glass Navbar State --- */
+    const navbar = document.getElementById('navbar');
+    // Using targetY instead of scrollY to sync with the visual scroll payload
+    window.addEventListener('scroll', () => {
+        if (targetY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    }, { passive: true });
+    });
 
-    // 3. Magnetic Navbar "Flowing Underline"
-    const indicator = document.getElementById('nav-indicator');
-    const navList = document.querySelector('.nav-links');
-    
-    if (indicator && navList) {
-        navItems.forEach(link => {
-            link.addEventListener('mouseenter', (e) => {
-                const linkRect = e.target.getBoundingClientRect();
-                const navRect = navList.getBoundingClientRect();
-                
-                // Calculate position relative to the ul (.nav-links)
-                const left = linkRect.left - navRect.left;
-                const width = linkRect.width;
-                
-                indicator.style.width = `${width}px`;
-                indicator.style.transform = `translateX(${left}px)`;
-                indicator.style.opacity = '1';
-            });
-        });
-
-        navList.addEventListener('mouseleave', () => {
-            indicator.style.width = '0';
-            indicator.style.opacity = '0';
+    /* --- 3. Mobile Hamburger (Basic Toggle) --- */
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            alert('Mobile menu click function enabled!');
+            // Mobile Dropdown toggler code could go here
         });
     }
 
-    // 4. "Drawer" Masking Scroll Reveal Effect (Intersection Observer)
-    const revealElements = document.querySelectorAll('.drawer-reveal');
+    /* --- 4. "Blueprint" Shutter Reveal (Intersection Observer) --- */
+    const revealElements = document.querySelectorAll('.shutter-reveal');
+    
+    // We adjust the margins based on the smooth scroller wrapper shifting content offset
     const observerOptions = {
         root: null,
-        rootMargin: "0px 0px -100px 0px", // Trigger when slightly into the viewport
+        rootMargin: "0px 0px -50px 0px", // Trigger slightly inside viewport
         threshold: 0
     };
 
@@ -83,32 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // observer.unobserve(entry.target); // Revealing once. Comment logic if we want repeat
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     revealElements.forEach(el => revealObserver.observe(el));
-
-    // 5. Hero Parallax Effect Native JS
-    const heroParallax = document.getElementById('hero-parallax');
     
-    if (heroParallax) {
-        let ticking = false;
-        
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.scrollY;
-                    // Only apply parallax if hero is in view
-                    if (scrolled < window.innerHeight) {
-                        // Move background at 30% speed of scroll
-                        heroParallax.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-    }
+    // Re-check heights periodically in case of lazy-loaded images extending the document late
+    setInterval(setBodyHeight, 1500);
 });
